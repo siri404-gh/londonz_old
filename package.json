@@ -9,7 +9,9 @@
     "build:dev": "webpack --env=dev --config=webpack/webpack.config.js",
     "build:devserver": "webpack-dev-server --env=dev --config=webpack/webpack.config.js",
     "lint": "eslint src/*",
-    "start": "electron dist/electron.js"
+    "start": "electron dist/electron.js",
+    "build:firebase": "webpack --env=prod --config=webpack/webpack.config.js",
+    "firebase:deploy": "firebase use staging && firebase deploy --token $FIREBASE_TOKEN"
   },
   "repository": {
     "type": "git",
@@ -33,6 +35,7 @@
     "eslint": "^5.9.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "firebase-tools": "^6.1.0",
     "html-webpack-plugin": "^3.2.0",
     "react-hot-loader": "^4.3.12",
     "webpack": "^4.25.1",
