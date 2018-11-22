@@ -22,4 +22,5 @@ module.exports = {
     wdsPort: 9000,
     serverPort: 5000,
   },
+  dist: '_dist',
 };

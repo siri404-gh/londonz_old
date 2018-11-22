@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "./dist",
+    "public": "./_dist",
     "headers": [{
       "source" : "*.js",
       "headers" : [{

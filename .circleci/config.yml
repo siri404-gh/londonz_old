@@ -24,6 +24,6 @@ jobs:
           command: npm run build:firebase && npm run firebase:deploy
 workflows:
   version: 2
-  stage_test_heroku:
+  stage:
     jobs:
       - stage

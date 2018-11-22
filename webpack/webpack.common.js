@@ -5,14 +5,14 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const Visualizer = require('webpack-visualizer-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { navbar: { title, tagline }, seo: { keywords } } = require('../config/variables');
+const { navbar: { title, tagline }, seo: { keywords }, dist } = require('../config/variables');
 
 module.exports = {
   entry: {
     app: './src/web/index.js',
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, `../${dist}`),
     filename: '[name].[contenthash].bundle.js',
     publicPath: '/',
   },
@@ -34,7 +34,7 @@ module.exports = {
       keywords,
       template: path.resolve(__dirname, 'template/template.html'),
     }),
-    new CleanWebpackPlugin([ 'dist' ], {
+    new CleanWebpackPlugin([ dist ], {
       root: path.resolve(__dirname, '../'),
       exclude: [],
       verbose: false,
@@ -47,7 +47,7 @@ module.exports = {
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
       analyzerMode: 'static',
-      reportFilename: path.resolve(__dirname, `../dist/bundle.html`),
+      reportFilename: path.resolve(__dirname, `../${dist}/bundle.html`),
     }),
     new Visualizer({
       filename: './visualizer.html',
