@@ -1,6 +1,6 @@
 {
   "projects": {
-    "staging": "sreeram-stage",
-    "production": "project-nidhi"
+    "staging": "londonz-stage",
+    "production": "londonz-prod"
   }
 }
