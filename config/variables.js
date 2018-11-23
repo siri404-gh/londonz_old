@@ -2,7 +2,7 @@ module.exports = {
   seo: {
     title: 'Title',
     description: 'Description',
-    keywords: 'web development, boilerplate project, webpack, react boilerplate, web development from scratch, javascript, how to create a website from scratch, performance, progressive web apps',
+    keywords: 'keyword',
   },
   manifest: {
     seed: {
@@ -20,7 +20,7 @@ module.exports = {
   },
   ports: {
     wdsPort: 9000,
-    serverPort: 5000,
+    serverPort: 9000,
   },
   dist: '_dist',
 };

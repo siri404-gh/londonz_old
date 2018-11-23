@@ -1,12 +1,15 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/App/App';
+import Routes from './routes';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 
-render(<App />, document.getElementById('root'));
-console.log(process.env);
+const isProd = process.env.NODE_ENV === 'production';
+const component = isProd ? <ErrorBoundary><Routes /></ErrorBoundary> : <Routes />;
 
-// if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+render(component, document.getElementById('root'));
+
+// if ('serviceWorker' in navigator && isProd) {
 //   window.addEventListener('load', () => {
 //     navigator.serviceWorker
 //       .register('/service-worker.js')
