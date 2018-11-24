@@ -29,7 +29,7 @@ module.exports = {
       { test: /\.md$/, exclude: /node_modules/, use: { loader: 'raw-loader' } },
       { test: /\.css$/, use: extractCSS.extract([ 'css-loader', 'style-loader' ]) },
       { test: /\.less$/i, use: extractLESS.extract([ 'css-loader', 'less-loader' ]) },
-      { test: /\.(svg|png|jpg|jpeg|gif)$/, loader: 'file-loader', options: { name: 'img/icons/[name].[ext]' } },
+      { test: /\.(svg|png|jpg|jpeg|gif)$/, loader: 'file-loader', options: { name: 'img/[name].[ext]' } },
       { test: /\.(woff|woff2|ttf|eot)$/, loader: 'file-loader', options: { name: 'fonts/[name].[ext]' } },
     ],
   },
@@ -59,7 +59,7 @@ module.exports = {
       filename: './visualizer.html',
     }),
     new CopyWebpackPlugin([
-      { from: 'webpack/template/favicon.png', to: 'favicon.png' },
+      // { from: 'webpack/template/favicon.png', to: 'favicon.png' },
       { from: 'webpack/template/electron.js', to: 'electron.js' },
     ]),
     extractLESS,

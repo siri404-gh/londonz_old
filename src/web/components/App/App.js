@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
-import Navbar from '../Navbar/Navbar';
-import Card from '../Card/Card';
-import Paper from '../Paper/Paper';
-import TitlebarGridList from '../TitlebarGridList/TitlebarGridList';
+// import Navbar from '../Navbar/Navbar';
+// import Card from '../Card/Card';
+// import Paper from '../Paper/Paper';
+// import TitlebarGridList from '../TitlebarGridList/TitlebarGridList';
 import styles from './styles';
 import theme from './theme';
 import './app.less';
+import '../../assets/favicon.png';
 
-const { navbar : { title, tagline } } = require('../../../../config/variables');
+// const { navbar : { title, tagline } } = require('../../../../config/variables');
 
 class App extends Component {
   componentDidMount() {
