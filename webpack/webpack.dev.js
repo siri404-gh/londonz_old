@@ -25,6 +25,7 @@ module.exports = merge(commonConfig, {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
+        FIREBASE_API: JSON.stringify(process.env.FIREBASE_API),
       },
     }),
   ],

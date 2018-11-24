@@ -39,7 +39,7 @@ const firebaseApp = firebase.initializeApp(config);
 
 class Login extends React.Component {
   uiConfig = {
-    signInFlow: 'popup',
+    signInFlow: 'redirect',
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
