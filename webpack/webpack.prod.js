@@ -17,6 +17,7 @@ module.exports = merge(commonConfig, {
         LOGROCKET_ID: JSON.stringify(process.env.LOGROCKET_ID),
         AIRBRAKE_PROJECT_KEY: JSON.stringify(process.env.AIRBRAKE_PROJECT_KEY),
         AIRBRAKE_ID: JSON.stringify(process.env.AIRBRAKE_ID),
+        FIREBASE_API: JSON.stringify(process.env.FIREBASE_API),
       },
     }),
   ],

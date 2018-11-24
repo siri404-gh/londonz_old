@@ -27,7 +27,7 @@ module.exports = {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, use: { loader: 'babel-loader' } },
       { test: /\.md$/, exclude: /node_modules/, use: { loader: 'raw-loader' } },
-      { test: /\.css$/, use: extractCSS.extract([ 'css-loader', 'style-loader' ]) },
+      { test: /\.css$/, use: extractCSS.extract([ 'style-loader', 'css-loader' ]) },
       { test: /\.less$/i, use: extractLESS.extract([ 'css-loader', 'less-loader' ]) },
       { test: /\.(svg|png|jpg|jpeg|gif|ico)$/, loader: 'file-loader', options: { name: 'img/[name].[ext]' } },
       { test: /\.(woff|woff2|ttf|eot)$/, loader: 'file-loader', options: { name: 'fonts/[name].[ext]' } },

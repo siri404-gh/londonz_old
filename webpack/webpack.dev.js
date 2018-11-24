@@ -17,6 +17,7 @@ module.exports = merge(commonConfig, {
     compress: true,
     port: wdsPort,
     hotOnly: true,
+    // https: true,
   },
   devtool: 'inline-source-map',
   plugins: [
