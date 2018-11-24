@@ -1,22 +1,40 @@
+const title = 'Title';
+const shortName = 'Short Name';
+const tagline = 'tagline';
+const description = tagline;
+const keywords = 'keyword';
+
 module.exports = {
   seo: {
-    title: 'Title',
-    description: 'Description',
-    keywords: 'keyword',
+    title,
+    description,
+    keywords,
   },
   manifest: {
     seed: {
-      'short_name': 'Short name',
-      'name': 'Title',
+      'short_name': shortName,
+      'name': title,
       'start_url': '/',
       'background_color': '#000000',
       'display': 'standalone',
       'theme_color': 'orange',
+      "icons": [
+        {
+          "src": "/img/logo-192.png",
+          "type": "image/png",
+          "sizes": "192x192",
+        },
+        {
+          "src": "/img/logo-512.png",
+          "type": "image/png",
+          "sizes": "512x512",
+        },
+      ],
     },
   },
   navbar: {
-    title: 'Navbar title',
-    tagline: 'Navbar tagline',
+    title,
+    tagline,
   },
   ports: {
     wdsPort: 9000,

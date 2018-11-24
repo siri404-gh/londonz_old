@@ -1,17 +1,32 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import deepPurple from '@material-ui/core/colors/deepPurple';
-import orange from '@material-ui/core/colors/orange';
+import blue from '@material-ui/core/colors/blue';
 
 export default createMuiTheme({
   palette: {
-    primary: deepPurple,
-    secondary: orange,
-  },
-  background: {
-    primary: '#ecf0f2',
+    // type: 'dark',
+    primary: blue,
+    // secondary: {
+    //   light: '#0066ff',
+    //   main: '#0044ff',
+    //   // dark: will be calculated from palette.secondary.main,
+    //   contrastText: '#ffcc00',
+    // },
   },
   typography: {
-    fontSize: 13,
+    fontSize: 12,
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
     useNextVariants: true,
   },
 });

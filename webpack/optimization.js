@@ -13,7 +13,7 @@ module.exports = {
           // or node_modules/packageName
           const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[index];
           // npm package names are URL-safe, but some servers don't like @ symbols
-          return `npm-${packageName.replace('@', '')}`;
+          return `js/npm-${packageName.replace('@', '')}`;
         },
       },
     },
