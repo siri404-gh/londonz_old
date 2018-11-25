@@ -11,11 +11,9 @@ const styles = {
 
 function LinearIndeterminate(props) {
   const { classes } = props;
-  console.log('loading');
   return (
     <div className={classes.root}>
       <LinearProgress />
-      {/* <LinearProgress color="secondary" /> */}
     </div>
   );
 }

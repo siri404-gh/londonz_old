@@ -15,41 +15,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-
-const drawerWidth = 240;
-
-const styles = theme => ({
-  root: {
-    display: 'flex',
-  },
-  drawer: {
-    [theme.breakpoints.up('md')]: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-  },
-  appBar: {
-    marginLeft: drawerWidth,
-    [theme.breakpoints.up('md')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
-  },
-  menuButton: {
-    marginRight: 20,
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
-  },
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 3,
-  },
-});
+import Tabs from '../Tabs/Tabs';
+import styles from './styles';
 
 class ResponsiveDrawer extends React.Component {
   state = {
@@ -63,29 +30,18 @@ class ResponsiveDrawer extends React.Component {
   render() {
     const { classes, theme } = this.props;
 
-    const drawer = (
-      <div>
-        <div className={classes.toolbar} />
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </div>
-    );
+    const drawer = <div>
+      <div className={classes.toolbar} />
+      <Divider />
+      <List>
+        {[ 'Inbox', 'Starred', 'Send email', 'Drafts' ].map((text) => <ListItem button key={text}>
+          <ListItemIcon><InboxIcon /></ListItemIcon>
+          <ListItemText primary={text} />
+        </ListItem>
+        )}
+      </List>
+      <Divider />
+    </div>;
 
     return (
       <div className={classes.root}>
@@ -96,8 +52,7 @@ class ResponsiveDrawer extends React.Component {
               color="inherit"
               aria-label="Open drawer"
               onClick={this.handleDrawerToggle}
-              className={classes.menuButton}
-            >
+              className={classes.menuButton}>
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
@@ -105,6 +60,7 @@ class ResponsiveDrawer extends React.Component {
             </Typography>
           </Toolbar>
         </AppBar>
+
         <nav className={classes.drawer}>
           {/* The implementation can be swap with js to avoid SEO duplication of links. */}
           <Hidden mdUp implementation="css">
@@ -119,8 +75,7 @@ class ResponsiveDrawer extends React.Component {
               }}
               ModalProps={{
                 keepMounted: true, // Better open performance on mobile.
-              }}
-            >
+              }}>
               {drawer}
             </Drawer>
           </Hidden>
@@ -130,38 +85,20 @@ class ResponsiveDrawer extends React.Component {
                 paper: classes.drawerPaper,
               }}
               variant="permanent"
-              open
-            >
+              open>
               {drawer}
             </Drawer>
           </Hidden>
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Typography paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent
-            elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in
-            hendrerit gravida rutrum quisque non tellus. Convallis convallis tellus id interdum
-            velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing.
-            Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis
-            viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo.
-            Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus
-            at augue. At augue eget arcu dictum varius duis at consectetur lorem. Velit sed
-            ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac.
+          <Tabs />
+          {/* <Typography paragraph>
+            Hey, I am Sreeram Padmanabhan. Some friends call me Sree. I am a Web Developer and this is my Web Boilerplate project. Its a comprehensive tutorial on how to create your own website from scratch. This website will be performant, will look pleasing, will be responsive, accessible and will be search engine optimised. It will use the latest web technologies which most enterprise companies use today.
           </Typography>
           <Typography paragraph>
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-            facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-            tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-            consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus
-            sed vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in.
-            In hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-            et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique
-            sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo
-            viverra maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
-            ultrices sagittis orci a.
-          </Typography>
+            At the end of this tutorial, you will have a boilerplate project from which you can build any application you want and deploy to the Web, Mobile or even as a Desktop app with zero or minimal configuration. Infact, this very website was made using the boilerplate. Navigate through the links in the left sidebar to learn more about each topic.
+          </Typography> */}
         </main>
       </div>
     );

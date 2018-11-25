@@ -25,17 +25,9 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 // Styles
 import styles from './login.css'; // This uses CSS modules.
 import './firebaseui-styling.global.css'; // Import globally.
+const { navbar: { title }, firebaseConfig } = require('../../../../config/variables');
 
-const config = {
-  apiKey: process.env.FIREBASE_API,
-  authDomain: "londonz-stage.firebaseapp.com",
-  databaseURL: "https://londonz-stage.firebaseio.com",
-  projectId: "londonz-stage",
-  storageBucket: "londonz-stage.appspot.com",
-  messagingSenderId: "1052545227182",
-};
-
-const firebaseApp = firebase.initializeApp(config);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 class Login extends React.Component {
   uiConfig = {
@@ -58,7 +50,6 @@ class Login extends React.Component {
   componentDidMount() {
     this.unregisterAuthObserver = firebaseApp.auth().onAuthStateChanged((user) => {
       this.setState({ isSignedIn: !!user });
-      console.log(user);
       if(user) this.props.history.push('/app');
     });
   }
@@ -69,13 +60,12 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className={styles.container}>
-        {this.state.isSignedIn !== undefined && !this.state.isSignedIn && <StyledFirebaseAuth className={styles.firebaseUi} uiConfig={this.uiConfig} firebaseAuth={firebaseApp.auth()}/>}
-        {/* {this.state.isSignedIn &&
-          <div className={styles.signedIn}>
-            Hello {firebaseApp.auth().currentUser.displayName}. You are now signed In!
-            <a className={styles.button} onClick={() => firebaseApp.auth().signOut()}>Sign-out</a>
-          </div>} */}
+      <div className="container">
+        <div className="logo">
+          <h1 className="caption">{title}</h1>
+          <img className="logoIcon" src="/img/logo-192.png"/>
+        </div>
+        {!this.state.isSignedIn && <StyledFirebaseAuth className={styles.firebaseUi} uiConfig={this.uiConfig} firebaseAuth={firebaseApp.auth()}/>}
       </div>
     );
   }
