@@ -57,12 +57,11 @@ class Login extends React.Component {
   }
 
   render() {
-    console.log(this.state.isSignedIn);
     return (
       <div className="container">
         <div className="logo">
           <h1 className="caption">{title}</h1>
-          <img className="logoIcon" src="/img/logo-192.png"/>
+          <img alt="logo" className="logoIcon" src="/img/logo-192.png"/>
         </div>
         {this.state.isSignedIn !== undefined && !this.state.isSignedIn && <StyledFirebaseAuth className={styles.firebaseUi} uiConfig={this.uiConfig} firebaseAuth={firebaseApp.auth()}/>}
         {(this.state.isSignedIn === undefined || this.state.isSignedIn) && <LoadingIndicator />}
