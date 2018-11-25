@@ -2,10 +2,10 @@
   "hosting": {
     "public": "./_dist",
     "headers": [{
-      "source" : "*.js",
+      "source" : "**/*.@(js|css|jpg|jpeg|gif|png)",
       "headers" : [{
         "key" : "Cache-Control",
-        "value" : "max-age=90000"
+        "value" : "max-age=86400"
       }]
     }],
     "rewrites": [{
