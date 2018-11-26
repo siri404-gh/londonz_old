@@ -17,6 +17,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import Avatar from '@material-ui/core/Avatar';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 import Tabs from '../Tabs/Tabs';
 import LogoButton from '../LogoButton/LogoButton';
 import styles from './styles';
@@ -25,14 +27,25 @@ import './Drawer.less';
 class ResponsiveDrawer extends React.Component {
   state = {
     mobileOpen: false,
+    anchorEl: null,
   };
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
+  handleMenu = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
   render() {
     const { classes, theme } = this.props;
+    const { anchorEl } = this.state;
+    const open = Boolean(anchorEl);
 
     const drawer = <div>
       {/* <div className={classes.toolbar} /> */}
@@ -72,6 +85,22 @@ class ResponsiveDrawer extends React.Component {
               <Avatar alt="Remy Sharp" src="/img/logo-512.png" className={classNames(classes.avatar, classes.bigAvatar)} />
               {/* <AccountCircle /> */}
             </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={open}
+              onClose={this.handleClose}>
+              <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+              <MenuItem onClick={this.handleClose}>Sign out</MenuItem>
+            </Menu>
           </Toolbar>
         </AppBar>
 
@@ -106,7 +135,7 @@ class ResponsiveDrawer extends React.Component {
         </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Tabs />
+          <Hidden mdUp implementation="css"><Tabs /></Hidden>
           {/* <Typography paragraph>
             Hey, I am Sreeram Padmanabhan. Some friends call me Sree. I am a Web Developer and this is my Web Boilerplate project. Its a comprehensive tutorial on how to create your own website from scratch. This website will be performant, will look pleasing, will be responsive, accessible and will be search engine optimised. It will use the latest web technologies which most enterprise companies use today.
           </Typography>

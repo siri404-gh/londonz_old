@@ -41,7 +41,12 @@ const theme = createMuiTheme({
     ].join(','),
     useNextVariants: true,
   },
-
+  props: {
+    // Name of the component ⚛️
+    // MuiButtonBase: {
+    //   disableRipple: true, // No more ripple, on the whole application 💣!
+    // },
+  },
   // palette: {
   //   primary: {
   //     light: primaryColorLight,
@@ -59,7 +64,7 @@ const theme = createMuiTheme({
   //   contrastThreshold: 3,
   //   tonalOffset: 0.2,
   // },
-  shadows: [ 'none' ],
+  // shadows: [ 'none' ],
   overrides: {
     MuiAppBar: {
       colorPrimary: {
