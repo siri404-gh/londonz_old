@@ -44,12 +44,10 @@ class SimpleTabs extends React.Component {
           <Tabs value={value} onChange={this.handleChange}>
             <Tab label="Item One" />
             <Tab label="Item Two" />
-            <Tab label="Item Three" />
           </Tabs>
         </AppBar>
         {value === 0 && <TabContainer>Item One</TabContainer>}
         {value === 1 && <TabContainer>Item Two</TabContainer>}
-        {value === 2 && <TabContainer>Item Three</TabContainer>}
       </div>
     );
   }

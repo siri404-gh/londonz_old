@@ -59,7 +59,7 @@ const theme = createMuiTheme({
   //   contrastThreshold: 3,
   //   tonalOffset: 0.2,
   // },
-  shadows: ['none'],
+  shadows: [ 'none' ],
   overrides: {
     MuiAppBar: {
       colorPrimary: {

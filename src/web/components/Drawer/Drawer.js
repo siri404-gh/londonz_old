@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,8 +16,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import Avatar from '@material-ui/core/Avatar';
 import Tabs from '../Tabs/Tabs';
+import LogoButton from '../LogoButton/LogoButton';
 import styles from './styles';
+import './Drawer.less';
 
 class ResponsiveDrawer extends React.Component {
   state = {
@@ -31,7 +35,8 @@ class ResponsiveDrawer extends React.Component {
     const { classes, theme } = this.props;
 
     const drawer = <div>
-      <div className={classes.toolbar} />
+      {/* <div className={classes.toolbar} /> */}
+      <LogoButton />
       <Divider />
       <List>
         {[ 'Inbox', 'Starred', 'Send email', 'Drafts' ].map((text) => <ListItem button key={text}>
@@ -55,9 +60,18 @@ class ResponsiveDrawer extends React.Component {
               className={classes.menuButton}>
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography variant="h6" color="inherit" className={classes.grow}>
               Responsive drawer
             </Typography>
+            <IconButton
+              aria-owns={open ? 'menu-appbar' : undefined}
+              aria-haspopup="true"
+              onClick={this.handleMenu}
+              color="inherit"
+              className={classes.avatarIcon}>
+              <Avatar alt="Remy Sharp" src="/img/logo-512.png" className={classNames(classes.avatar, classes.bigAvatar)} />
+              {/* <AccountCircle /> */}
+            </IconButton>
           </Toolbar>
         </AppBar>
 

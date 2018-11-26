@@ -1,10 +1,13 @@
 /* eslint-disable no-magic-numbers */
 
-const drawerWidth = 250;
+const drawerWidth = 256;
 
 const styles = theme => ({
   root: {
     display: 'flex',
+  },
+  grow: {
+    flexGrow: 1,
   },
   drawer: {
     [theme.breakpoints.up('md')]: {
@@ -31,6 +34,16 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 0,
+  },
+  avatarIcon: {
+    padding: 0,
+  },
+  avatar: {
+    // margin: 10,
+  },
+  bigAvatar: {
+    width: 30,
+    height: 30,
   },
 });
 

@@ -20,10 +20,14 @@
     "firebase": "^5.5.9",
     "logrocket": "^0.6.17",
     "logrocket-react": "^3.0.0",
+    "object-path-immutable": "^3.0.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-firebaseui": "^3.1.2",
+    "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "typeface-roboto": "0.0.54"
   },
   "devDependencies": {

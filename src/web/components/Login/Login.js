@@ -23,12 +23,12 @@ import 'firebase/auth';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 // Styles
-import styles from './login.css'; // This uses CSS modules.
+import './login.css'; // This uses CSS modules.
 import './firebaseui-styling.global.css'; // Import globally.
 const { navbar: { title }, firebaseConfig } = require('../../../../config/variables');
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-const delay = 2000;
+const delay = 1000;
 class Login extends React.Component {
   uiConfig = {
     signInFlow: 'redirect',
@@ -63,7 +63,7 @@ class Login extends React.Component {
           <h1 className="caption">{title}</h1>
           <img alt="logo" className="logoIcon" src="/img/logo-192.png"/>
         </div>
-        {this.state.isSignedIn !== undefined && !this.state.isSignedIn && <StyledFirebaseAuth className={styles.firebaseUi} uiConfig={this.uiConfig} firebaseAuth={firebaseApp.auth()}/>}
+        {this.state.isSignedIn !== undefined && !this.state.isSignedIn && <StyledFirebaseAuth className="firebaseUi" uiConfig={this.uiConfig} firebaseAuth={firebaseApp.auth()}/>}
         {(this.state.isSignedIn === undefined || this.state.isSignedIn) && <LoadingIndicator />}
       </div>
     );
