@@ -5,7 +5,7 @@ const description = tagline;
 const keywords = 'keyword';
 
 module.exports = {
-  login: false,
+  login: true,
   seo: {
     title,
     description,
