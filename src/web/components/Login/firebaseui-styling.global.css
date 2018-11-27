@@ -21,6 +21,7 @@
   padding-top: 10px;
   border-radius: 20px;
   box-shadow: none;
+  margin-top: 150px;
 }
 .firebaseui-container.firebaseui-page-provider-sign-in {
   background: transparent;

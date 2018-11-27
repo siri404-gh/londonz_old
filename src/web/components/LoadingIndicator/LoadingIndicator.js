@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import './loader.css';
 
 const styles = theme => ({
   progress: {
@@ -11,6 +12,9 @@ const styles = theme => ({
 
 function CircularIndeterminate(props) {
   const { classes } = props;
+  return <div className="logo">
+    <img alt="logo" className="logoIcon rotate" src="/img/logo-192.png" />
+  </div>;
   return (
     <div>
       <CircularProgress className={classes.progress} /> <br />

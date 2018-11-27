@@ -93,8 +93,7 @@ class FloatingActionButtonZoom extends React.Component {
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
-            fullWidth
-          >
+            fullWidth>
             <Tab label="Item One" />
             <Tab label="Item Two" />
           </Tabs>
@@ -102,8 +101,7 @@ class FloatingActionButtonZoom extends React.Component {
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={this.state.value}
-          onChangeIndex={this.handleChangeIndex}
-        >
+          onChangeIndex={this.handleChangeIndex}>
           <TabContainer dir={theme.direction}>Item One</TabContainer>
           <TabContainer dir={theme.direction}>Item Two</TabContainer>
         </SwipeableViews>

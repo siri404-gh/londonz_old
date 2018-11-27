@@ -21,10 +21,9 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 // Styles
-import './login.css'; // This uses CSS modules.
-import './firebaseui-styling.global.css'; // Import globally.
-const { navbar: { title }, firebaseConfig } = require('../../../../config/variables');
+const { firebaseConfig } = require('../../../../config/variables');
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const delay = 1000;
@@ -56,13 +55,11 @@ class Login extends React.Component {
   }
 
   render() {
+    console.log(this.state.isSignedIn);
     return (
       <div className="container">
-        <div className="logo">
-          <h1 className="caption">{title}</h1>
-          <img alt="logo" className="logoIcon rotate" src="/img/logo-192.png"/>
-        </div>
-        {this.state.isSignedIn !== undefined && !this.state.isSignedIn && <StyledFirebaseAuth className="firebaseUi" uiConfig={this.uiConfig} firebaseAuth={firebaseApp.auth()}/>}
+        {this.state.isSignedIn === false && <StyledFirebaseAuth className="firebaseUi" uiConfig={this.uiConfig} firebaseAuth={firebaseApp.auth()}/>}
+        {(this.state.isSignedIn === undefined || this.state.isSignedIn) && <LoadingIndicator />}
       </div>
     );
   }
