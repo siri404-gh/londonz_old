@@ -1,101 +1,119 @@
-/*eslint-disable no-unused-vars */
-
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import {
-  primaryColor,
-  primaryColorDark,
-  primaryColorLight,
-  accentColor,
-  accentColorDark,
-  accentColorLight,
-  text,
-  primaryText,
-  secondaryText,
-  accentText,
-  backgroundColor,
-  errorColor,
-  backgroundContrast,
-  backgroundColorDark,
-  backgroundDarkGradient,
-  backgroundLightGradient,
-  backgroundContrastDarkGradient,
-  backgroundContrastLightGradient,
-} from './colors';
-
-const theme = createMuiTheme({
+let theme = createMuiTheme({
   typography: {
-    fontSize: 12,
-    // Use the system font instead of the default Roboto font.
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
     useNextVariants: true,
-  },
-  props: {
-    // Name of the component ⚛️
-    // MuiButtonBase: {
-    //   disableRipple: true, // No more ripple, on the whole application 💣!
-    // },
-  },
-  // palette: {
-  //   primary: {
-  //     light: primaryColorLight,
-  //     main: primaryColor,
-  //     dark: primaryColorDark,
-  //     contrastText: primaryText,
-  //   },
-  //   secondary: {
-  //     light: accentColorLight,
-  //     main: accentColor,
-  //     dark: accentColorDark,
-  //     contrastText: primaryText,
-  //   },
-  //   error: { main: errorColor },
-  //   contrastThreshold: 3,
-  //   tonalOffset: 0.2,
-  // },
-  // shadows: [ 'none' ],
-  overrides: {
-    MuiAppBar: {
-      colorPrimary: {
-        // background: backgroundDarkGradient,
-        backgroundColor: '#039be5',
-      },
+    h5: {
+      fontWeight: 500,
+      fontSize: 26,
+      letterSpacing: 0.5,
     },
-    MuiDrawer: {
-      paper: {
-        backgroundColor: backgroundColorDark,
-      },
+  },
+  palette: {
+    primary: {
+      light: '#63ccff',
+      main: '#009be5',
+      dark: '#006db3',
     },
-    // MuiSnackbarContent: {
-    //   root: {
-    //     backgroundColor: primaryColorDark,
-    //   },
-    // },
-    // MuiTooltip: {
-    //   tooltip: {
-    //     background: backgroundDarkGradient,
-    //   },
-    // },
-    // MuiLinearProgress: {
-    //   root: {
-    //     height: '0.25rem',
-    //   },
-    //   colorSecondary: {
-    //     backgroundColor: 'transparent',
-    //   },
-    // },
+  },
+  shape: {
+    borderRadius: 8,
   },
 });
+
+theme = {
+  ...theme,
+  overrides: {
+    MuiDrawer: {
+      paper: {
+        backgroundColor: '#18202c',
+      },
+    },
+    MuiButton: {
+      label: {
+        textTransform: 'initial',
+      },
+      contained: {
+        boxShadow: 'none',
+        '&:active': {
+          boxShadow: 'none',
+        },
+      },
+    },
+    MuiTabs: {
+      root: {
+        marginLeft: theme.spacing.unit,
+      },
+      indicator: {
+        height: 3,
+        borderTopLeftRadius: 3,
+        borderTopRightRadius: 3,
+        backgroundColor: theme.palette.common.white,
+      },
+    },
+    MuiTab: {
+      root: {
+        textTransform: 'initial',
+        margin: '0 16px',
+        minWidth: 0,
+        [theme.breakpoints.up('md')]: {
+          minWidth: 0,
+        },
+      },
+      labelContainer: {
+        padding: 0,
+        [theme.breakpoints.up('md')]: {
+          padding: 0,
+        },
+      },
+    },
+    MuiIconButton: {
+      root: {
+        padding: theme.spacing.unit,
+      },
+    },
+    MuiTooltip: {
+      tooltip: {
+        borderRadius: 4,
+      },
+    },
+    MuiDivider: {
+      root: {
+        backgroundColor: '#404854',
+      },
+    },
+    MuiListItemText: {
+      primary: {
+        fontWeight: theme.typography.fontWeightMedium,
+      },
+    },
+    MuiListItemIcon: {
+      root: {
+        color: 'inherit',
+        marginRight: 0,
+        '& svg': {
+          fontSize: 20,
+        },
+      },
+    },
+    MuiAvatar: {
+      root: {
+        width: 32,
+        height: 32,
+      },
+    },
+  },
+  props: {
+    MuiTab: {
+      disableRipple: true,
+    },
+  },
+  mixins: {
+    ...theme.mixins,
+    toolbar: {
+      minHeight: 48,
+    },
+  },
+};
 
 export default theme;

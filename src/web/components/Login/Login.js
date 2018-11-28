@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-// React core.
 import React from 'react';
-
-// Firebase.
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
-// Styles
-const { firebaseConfig } = require('../../../../config/variables');
 
+const { firebaseConfig } = require('../../../../config/variables');
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const delay = 1000;
+
 class Login extends React.Component {
   uiConfig = {
     signInFlow: 'redirect',
@@ -55,7 +52,6 @@ class Login extends React.Component {
   }
 
   render() {
-    console.log(this.state.isSignedIn);
     return (
       <div className="container">
         {this.state.isSignedIn === false && <StyledFirebaseAuth className="firebaseUi" uiConfig={this.uiConfig} firebaseAuth={firebaseApp.auth()}/>}
