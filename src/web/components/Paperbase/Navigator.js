@@ -102,47 +102,41 @@ function Navigator(props) {
           <ListItemText
             classes={{
               primary: classes.itemPrimary,
-            }}
-          >
+            }}>
             Project Overview
           </ListItemText>
         </ListItem>
-        {categories.map(({ id, children }) => (
-          <React.Fragment key={id}>
-            <ListItem className={classes.categoryHeader}>
-              <ListItemText
-                classes={{
-                  primary: classes.categoryHeaderPrimary,
-                }}
-              >
-                {id}
-              </ListItemText>
-            </ListItem>
-            {children.map(({ id: childId, icon, active }) => (
-              <ListItem
-                button
-                dense
-                key={childId}
-                className={classNames(
-                  classes.item,
-                  classes.itemActionable,
-                  active && classes.itemActiveItem,
-                )}
-              >
-                <ListItemIcon>{icon}</ListItemIcon>
-                <ListItemText
-                  classes={{
-                    primary: classes.itemPrimary,
-                    textDense: classes.textDense,
-                  }}
-                >
-                  {childId}
-                </ListItemText>
-              </ListItem>
-            ))}
-            <Divider className={classes.divider} />
-          </React.Fragment>
-        ))}
+        {categories.map(({ id, children }) => <React.Fragment key={id}>
+          <ListItem className={classes.categoryHeader}>
+            <ListItemText
+              classes={{
+                primary: classes.categoryHeaderPrimary,
+              }}>
+              {id}
+            </ListItemText>
+          </ListItem>
+          {children.map(({ id: childId, icon, active }) => <ListItem
+            button
+            dense
+            key={childId}
+            className={classNames(
+              classes.item,
+              classes.itemActionable,
+              active && classes.itemActiveItem,
+            )}>
+            <ListItemIcon>{icon}</ListItemIcon>
+            <ListItemText
+              classes={{
+                primary: classes.itemPrimary,
+                textDense: classes.textDense,
+              }}>
+              {childId}
+            </ListItemText>
+          </ListItem>
+          )}
+          <Divider className={classes.divider} />
+        </React.Fragment>
+        )}
       </List>
     </Drawer>
   );

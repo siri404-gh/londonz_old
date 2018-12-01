@@ -1,15 +1,19 @@
 /* eslint-disable no-console */
+const path = require('path');
 const express = require('express');
 const { dist, ports: { serverPort } } = require('../config/variables');
 
 const app = express();
 const port = process.env.PORT || serverPort;
 
-app.get('*.bundle.js', function (req, res, next) {
-  // req.url = req.url + '.gz';
-  // res.set('Content-Encoding', 'gzip');
-  next();
+app.use('/', express.static(dist));
+// app.get('*.bundle.js', function (req, res) {
+//   // req.url = req.url + '.gz';
+//   // res.set('Content-Encoding', 'gzip');
+// });
+
+app.get('/crypt', function (req, res) {
+  res.sendFile(path.resolve(__dirname, `./mock/crypt.json`));
 });
 
-app.use('/', express.static(dist));
 app.listen(port, () => console.log(`SERVER: Listening on port ${port}`));

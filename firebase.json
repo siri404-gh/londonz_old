@@ -1,16 +1,22 @@
 {
   "hosting": {
     "public": "./_dist",
-    "headers": [{
-      "source" : "**/*.@(js|css|jpg|jpeg|gif|png)",
-      "headers" : [{
-        "key" : "Cache-Control",
-        "value" : "max-age=86400"
-      }]
-    }],
-    "rewrites": [{
-      "source": "/post/**/*",
-      "destination": "/index.html"
-    }]
+    "headers": [
+      {
+        "source": "**/*.@(js|css|jpg|jpeg|gif|png)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=86400"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/post/**/*",
+        "destination": "/index.html"
+      }
+    ]
   }
 }

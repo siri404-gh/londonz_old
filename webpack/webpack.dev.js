@@ -18,6 +18,9 @@ module.exports = merge(commonConfig, {
     port: wdsPort,
     hotOnly: true,
     // https: true,
+    proxy: {
+      '**': 'http://localhost:9001',
+    },
   },
   devtool: 'inline-source-map',
   plugins: [

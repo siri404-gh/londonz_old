@@ -39,7 +39,7 @@ module.exports = {
   },
   ports: {
     wdsPort: 9000,
-    serverPort: 9000,
+    serverPort: 9001,
   },
   dist: '_dist',
   firebaseConfig: {

@@ -54,8 +54,7 @@ function Content(props) {
                 InputProps={{
                   disableUnderline: true,
                   className: classes.searchInput,
-                }}
-              />
+                }}/>
             </Grid>
             <Grid item>
               <Button variant="contained" color="primary" className={classes.addUser}>

@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { connect } from 'react-redux';
 import Hidden from '@material-ui/core/Hidden';
 import Navigator from './Navigator';
 import Content from './Content';
 import Header from './Header';
+import FullpageLoader from '../FullpageLoader/FullpageLoader';
+import { getCrypt, getLeaderboard } from '../../../data/app/appActions';
 
 let theme = createMuiTheme({
   typography: {
@@ -19,7 +22,7 @@ let theme = createMuiTheme({
   palette: {
     primary: {
       light: '#63ccff',
-      main: '#009be5',
+      main: '#19212b',
       dark: '#006db3',
     },
   },
@@ -131,7 +134,7 @@ const styles = () => ({
     minHeight: '100vh',
   },
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: drawerWidth,
       flexShrink: 0,
     },
@@ -152,33 +155,37 @@ class Paperbase extends React.Component {
   state = {
     mobileOpen: false,
   };
+  componentDidMount() {
+    const { getCrypt, getLeaderboard } = this.props;
+    getCrypt();
+    getLeaderboard();
+  }
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
   render() {
-    const { classes } = this.props;
-
+    const { classes, app: { isLoading, userDetails } } = this.props;
+    if (isLoading) return <FullpageLoader />;
     return (
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          <nav className={classes.drawer}>
-            <Hidden smUp implementation="js">
+          {/* <nav className={classes.drawer}>
+            <Hidden mdUp implementation="js">
               <Navigator
                 PaperProps={{ style: { width: drawerWidth } }}
                 variant="temporary"
                 open={this.state.mobileOpen}
-                onClose={this.handleDrawerToggle}
-              />
+                onClose={this.handleDrawerToggle} />
             </Hidden>
-            <Hidden xsDown implementation="css">
+            <Hidden smDown implementation="css">
               <Navigator PaperProps={{ style: { width: drawerWidth } }} />
             </Hidden>
-          </nav>
+          </nav> */}
           <div className={classes.appContent}>
-            <Header onDrawerToggle={this.handleDrawerToggle} />
+            <Header onDrawerToggle={this.handleDrawerToggle} userDetails={userDetails} />
             <main className={classes.mainContent}>
               <Content />
             </main>
@@ -193,4 +200,10 @@ Paperbase.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Paperbase);
+const mapStateToProps = state => state;
+const mapDispatchToProps = dispatch => ({
+  getCrypt: data => dispatch(getCrypt(data)),
+  getLeaderboard: data => dispatch(getLeaderboard(data)),
+});
+
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(Paperbase));

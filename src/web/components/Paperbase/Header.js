@@ -1,4 +1,5 @@
 import React from 'react';
+import Moment from 'moment';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Avatar from '@material-ui/core/Avatar';
@@ -41,41 +42,45 @@ const styles = theme => ({
 });
 
 function Header(props) {
-  const { classes, onDrawerToggle } = props;
+  const { classes, onDrawerToggle, userDetails } = props;
 
   return (
     <React.Fragment>
       <AppBar color="primary" position="sticky" elevation={0}>
         <Toolbar>
           <Grid container spacing={8} alignItems="center">
-            <Hidden smUp>
+            {/* <Hidden smUp>
               <Grid item>
                 <IconButton
                   color="inherit"
                   aria-label="Open drawer"
                   onClick={onDrawerToggle}
-                  className={classes.menuButton}
-                >
+                  className={classes.menuButton}>
                   <MenuIcon />
                 </IconButton>
               </Grid>
-            </Hidden>
+            </Hidden> */}
+            <Grid item>
+              <IconButton color="inherit" className={classes.iconButtonAvatar}>
+                <Avatar className={classes.avatar} src="./img/logo-192.png" />
+              </IconButton>
+            </Grid>
             <Grid item xs />
             <Grid item>
-              <Typography className={classes.link} component="a" href="#">
-                Go to docs
+              <Typography color="inherit" component="p">
+                {userDetails.displayName}
               </Typography>
             </Grid>
-            <Grid item>
+            {/* <Grid item>
               <Tooltip title="Alerts • No alters">
                 <IconButton color="inherit">
                   <NotificationsIcon />
                 </IconButton>
               </Tooltip>
-            </Grid>
+            </Grid> */}
             <Grid item>
               <IconButton color="inherit" className={classes.iconButtonAvatar}>
-                <Avatar className={classes.avatar} src="/img/logo-192.png" />
+                <Avatar className={classes.avatar} src={userDetails.photoURL} />
               </IconButton>
             </Grid>
           </Grid>
@@ -86,27 +91,29 @@ function Header(props) {
         className={classes.secondaryBar}
         color="primary"
         position="static"
-        elevation={0}
-      >
+        elevation={0}>
         <Toolbar>
           <Grid container alignItems="center" spacing={8}>
             <Grid item xs>
-              <Typography color="inherit" variant="h5">
-                Authentication
+              <Typography color="inherit" variant="h6">
+                LondonZ
               </Typography>
             </Grid>
             <Grid item>
-              <Button className={classes.button} variant="outlined" color="inherit" size="small">
+              <Typography className={classes.link} component="a" href="#">
+                Last login: {Moment(userDetails.lastLoginAt).fromNow()}
+              </Typography>
+              {/* <Button className={classes.button} variant="outlined" color="inherit" size="small">
                 Web setup
-              </Button>
+              </Button> */}
             </Grid>
-            <Grid item>
+            {/* <Grid item>
               <Tooltip title="Help">
                 <IconButton color="inherit">
                   <HelpIcon />
                 </IconButton>
               </Tooltip>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Toolbar>
       </AppBar>
@@ -117,10 +124,8 @@ function Header(props) {
         position="static"
         elevation={0}>
         <Tabs value={0} textColor="inherit">
-          <Tab textColor="inherit" label="Users" />
-          <Tab textColor="inherit" label="Sign-in method" />
-          <Tab textColor="inherit" label="Templates" />
-          <Tab textColor="inherit" label="Usage" />
+          <Tab textColor="inherit" label="Crypt" />
+          <Tab textColor="inherit" label="Leaderboard" />
         </Tabs>
       </AppBar>
     </React.Fragment>

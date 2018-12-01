@@ -1,6 +1,7 @@
 {
   "projects": {
     "staging": "londonz-stage",
-    "production": "londonz-prod"
+    "production": "londonz-prod",
+    "default": "londonz-stage"
   }
 }
