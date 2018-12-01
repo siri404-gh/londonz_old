@@ -1,67 +1,81 @@
-const functions = require('firebase-functions');
-const firebase = require('firebase');
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
+var functions = require('firebase-functions');
+var firebase = require('firebase');
+const cors = require("cors")
+const express = require("express");
 
 var config = {
-  apiKey: "AIzaSyBl1oBG_zHBGpvKgEsEjUZH3jfM-TeANJQ",
+  apiKey: process.env.FIREBASE_API,
   authDomain: "londonz-stage.firebaseapp.com",
   databaseURL: "https://londonz-stage.firebaseio.com",
   storageBucket: "londonz-stage.appspot.com",
 };
 
 firebase.initializeApp(config);
-// const database = firebase.database();
+var database = firebase.database();
 
-exports.points = functions.https.onRequest((req, res) => {
-  const userId = req.body.userId;
-  const points = req.body.points;
-  const words = req.body.lastword;
-  const displayName = req.body.displayName;
-  const level = req.body.level;
+// exports.leaderboard = functions.https.onRequest((req, res) => {
+//   return database.ref('/users/')
+//     .once('value').then(function (snapshot) {
+//       try {
+//         var users = snapshot.val();
+//         res.send({
+//           users,
+//         });
+//       } catch (e) {
+//         return JSON.stringify({ error: true });
+//       }
+//     });
+// });
 
-  return firebase.database().ref('users/' + userId).set({
-    points,
-    words,
-    displayName,
-    level
-  }).then(function (response) {
-    res.send(response);
-  });
+// exports.crypt = functions.https.onRequest((req, res) => {
+//   return database.ref('/crypts/')
+//     .once('value').then(function (snapshot) {
+//       try {
+//         var crypts = snapshot.val();
+//         res.send({
+//           crypt: crypts[1],
+//         });
+//       }
+//       catch (e) {
+//         return JSON.stringify({ error: true });
+//       }
+//     });
+// });
+
+const app = express();
+app.use(cors({ origin: true }));
+
+app.post("/crypt/", (req, res) => {
+  return database.ref('/crypts/')
+    .once('value').then(function (snapshot) {
+      try {
+        var crypts = snapshot.val();
+        res.send({
+          crypt: crypts[1],
+        });
+      }
+      catch (e) {
+        return JSON.stringify({ error: true });
+      }
+    });
 });
 
-exports.users = functions.https.onRequest((req, res) => {
-  return firebase.database().ref('/users/')
+app.get("/leaderboard/", (req, res) => {
+  return database.ref('/users/')
     .once('value').then(function (snapshot) {
       try {
         var users = snapshot.val();
         res.send({
-          users
+          users,
         });
-      }
-      catch (e) {
-        console.log('there has been an error', e);
+      } catch (e) {
+        return JSON.stringify({ error: true });
       }
     });
 });
 
-exports.details = functions.https.onRequest((req, res) => {
-  const userId = req.params[0].split('/').pop();
-  return firebase.database().ref('/users/' + userId)
-    .once('value').then(function (snapshot) {
-      try {
-        var points = snapshot.val().points;
-        var words = snapshot.val().words;
-        var level = snapshot.val().level;
-        res.send({
-          points,
-          words,
-          level
-        });
-      }
-      catch (e) {
-        console.log('there has been an error', e);
-      }
-    });
-});
+const api = functions.https.onRequest(app);
+
+module.exports = {
+  api,
+}

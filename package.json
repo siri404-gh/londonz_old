@@ -11,7 +11,7 @@
     "server:start": "nodemon server/",
     "electron:start": "electron dist/electron.js",
     "build:firebase": "webpack --env=prod --config=webpack/webpack.config.js",
-    "firebase:deploy": "firebase use staging && firebase deploy --token $FIREBASE_TOKEN"
+    "firebase:deploy": "cd functions && npm i && cd .. && firebase use staging && firebase deploy --token $FIREBASE_TOKEN"
   },
   "dependencies": {
     "@material-ui/core": "^3.5.1",
@@ -19,6 +19,7 @@
     "airbrake-js": "^1.6.0-beta.1",
     "axios": "^0.18.0",
     "firebase": "^5.5.9",
+    "firebase-functions": "^2.1.0",
     "logrocket": "^0.6.17",
     "logrocket-react": "^3.0.0",
     "moment": "^2.22.2",

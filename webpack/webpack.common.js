@@ -28,13 +28,14 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: "css-loader",
-        }) },
-      { test: /\.less$/i,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [ 'css-loader', 'less-loader' ],
         }),
       },
+      // { test: /\.less$/i,
+      //   use: ExtractTextPlugin.extract({
+      //     fallback: 'style-loader',
+      //     use: [ 'css-loader', 'less-loader' ],
+      //   }),
+      // },
       { test: /\.(svg|png|jpg|jpeg|gif|ico)$/, loader: 'file-loader', options: { name: 'img/[name].[ext]' } },
       { test: /\.(woff|woff2|ttf|eot)$/, loader: 'file-loader', options: { name: 'fonts/[name].[ext]' } },
     ],

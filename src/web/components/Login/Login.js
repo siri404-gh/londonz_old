@@ -2,7 +2,7 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import FullpageLoader from '../FullpageLoader/FullpageLoader';
+import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 import { connect } from 'react-redux';
 import { setUserDetails, setAppIsLoading } from '../../../data/app/appActions';
 
@@ -43,9 +43,11 @@ class Login extends React.Component {
   }
 
   render() {
-    return this.state.isSignedIn === false
-      ? <div className="container"><StyledFirebaseAuth className="firebaseUi" uiConfig={this.uiConfig} firebaseAuth={firebaseApp.auth()}/></div>
-      : <FullpageLoader/>
+    return <div className="container">
+      {this.state.isSignedIn === false
+        ? <StyledFirebaseAuth className="firebaseUi" uiConfig={this.uiConfig} firebaseAuth={firebaseApp.auth()}/>
+        : <LoadingIndicator/>}
+    </div>
   }
 }
 

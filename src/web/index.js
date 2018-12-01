@@ -4,6 +4,10 @@ import { render } from 'react-dom';
 import Routes from './routes';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 
+import './assets/favicon.ico';
+import './assets/logo-192.png';
+import './assets/logo-512.png';
+
 const isProd = process.env.NODE_ENV === 'production';
 const component = isProd ? <ErrorBoundary><Routes /></ErrorBoundary> : <Routes />;
 

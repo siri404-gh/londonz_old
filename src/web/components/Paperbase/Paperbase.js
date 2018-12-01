@@ -7,7 +7,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Navigator from './Navigator';
 import Content from './Content';
 import Header from './Header';
-import FullpageLoader from '../FullpageLoader/FullpageLoader';
+import LoadingIndicator from '../LoadingIndicator/LoadingIndicator';
 import { getCrypt, getLeaderboard } from '../../../data/app/appActions';
 
 let theme = createMuiTheme({
@@ -167,7 +167,7 @@ class Paperbase extends React.Component {
 
   render() {
     const { classes, app: { isLoading, userDetails } } = this.props;
-    if (isLoading) return <FullpageLoader />;
+    if (isLoading) return <div className="container"><LoadingIndicator /></div>;
     return (
       <MuiThemeProvider theme={theme}>
         <div className={classes.root}>

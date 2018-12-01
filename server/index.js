@@ -12,8 +12,12 @@ app.use('/', express.static(dist));
 //   // res.set('Content-Encoding', 'gzip');
 // });
 
-app.get('/crypt', function (req, res) {
+app.post('/crypt', function (req, res) {
   res.sendFile(path.resolve(__dirname, `./mock/crypt.json`));
+});
+
+app.get('/leaderboard', function (req, res) {
+  res.sendFile(path.resolve(__dirname, `./mock/leaderboard.json`));
 });
 
 app.listen(port, () => console.log(`SERVER: Listening on port ${port}`));

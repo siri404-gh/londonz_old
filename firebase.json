@@ -14,8 +14,12 @@
     ],
     "rewrites": [
       {
-        "source": "/post/**/*",
-        "destination": "/index.html"
+        "source": "/crypt",
+        "function": "crypt"
+      },
+      {
+        "source": "/leaderboard",
+        "function": "leaderboard"
       }
     ]
   }

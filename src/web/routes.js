@@ -1,8 +1,10 @@
 import { MemoryRouter as Router, Route, Switch } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
+import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import LinearIndeterminate from './components/LinearIndeterminate/LinearIndeterminate';
 import store from '../data/store/store';
+
 const App = lazy(() => import('./components/App/App'));
 const Login = lazy(() => import('./components/Login/Login'));
 
@@ -17,4 +19,4 @@ const Routes = () => <Router>
   </Provider>
 </Router>
 
-export default Routes;
+export default hot(module)(Routes);
